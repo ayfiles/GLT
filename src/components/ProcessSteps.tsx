@@ -147,22 +147,6 @@ const ProcessSteps = () => {
             })}
           </div>
         </div>
-
-        {/* Bottom CTA */}
-        <div className="text-center mt-16">
-          <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl p-8 border border-gray-100">
-            <h3 className="text-2xl font-semibold text-gray-900 mb-4">
-              Bereit für Ihr Projekt?
-            </h3>
-            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              Starten Sie noch heute mit Schritt 1 – kontaktieren Sie uns für eine 
-              kostenlose Erstberatung und Besichtigung vor Ort.
-            </p>
-            <button className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
-              Jetzt kostenfrei anfragen
-            </button>
-          </div>
-        </div>
       </div>
     </section>
   );

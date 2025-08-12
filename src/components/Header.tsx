@@ -14,7 +14,6 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { label: 'Start', href: '#hero' },
     { label: 'Leistungen', href: '#services' },
     { label: 'Projekte', href: '#projects' },
     { label: 'Über uns', href: '#about' },
@@ -31,12 +30,19 @@ const Header = () => {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-green-600 to-green-700 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">GLT</span>
-            </div>
-            <div className="hidden sm:block">
-              <h1 className="text-lg font-semibold text-green-800">GLT Garten- und Landschaftsbau</h1>
-              <p className="text-sm text-green-600">Meisterbetrieb seit 2025</p>
+            <div 
+              onClick={() => {
+                document.getElementById('hero')?.scrollIntoView({ 
+                  behavior: 'smooth' 
+                });
+              }}
+              className="w-20 h-20 rounded-lg flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity duration-200"
+            >
+              <img 
+                src="/images/glt logo.png" 
+                alt="GLT Logo" 
+                className="w-full h-full object-contain"
+              />
             </div>
           </div>
 
@@ -46,30 +52,26 @@ const Header = () => {
               <a
                 key={item.label}
                 href={item.href}
-                className="text-gray-700 hover:text-green-600 transition-colors duration-200 font-medium"
+                className={`transition-colors duration-200 font-medium ${
+                  isScrolled 
+                    ? 'text-green-700 hover:text-green-800' 
+                    : 'text-white hover:text-green-300'
+                }`}
               >
                 {item.label}
               </a>
             ))}
           </nav>
 
-          {/* Contact Info & CTA */}
-          <div className="flex items-center space-x-4">
-            <div className="hidden md:flex items-center space-x-4 text-sm">
-              <a href="tel:017631697541" className="flex items-center text-green-700 hover:text-green-800">
-                <Phone className="w-4 h-4 mr-1" />
-                0176 31697541
-              </a>
-            </div>
-            
-            <button className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2 rounded-lg font-semibold transition-colors duration-200 shadow-lg hover:shadow-xl">
-              Angebot anfordern
-            </button>
-
-            {/* Mobile Menu Button */}
+          {/* Mobile Menu Button */}
+          <div className="flex items-center">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-gray-700 hover:text-green-600"
+              className={`lg:hidden p-2 transition-colors duration-200 ${
+                isScrolled 
+                  ? 'text-green-700 hover:text-green-800' 
+                  : 'text-white hover:text-green-300'
+              }`}
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>

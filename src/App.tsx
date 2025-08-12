@@ -3,11 +3,10 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
 import BeforeAfter from './components/BeforeAfter';
-import Advantages from './components/Advantages';
+import AboutUs from './components/AboutUs';
 import ProcessSteps from './components/ProcessSteps';
 import ProjectGallery from './components/ProjectGallery';
 import Testimonials from './components/Testimonials';
-import ContactCTA from './components/ContactCTA';
 import MapSection from './components/MapSection';
 import Footer from './components/Footer';
 
@@ -19,11 +18,10 @@ function App() {
         <Hero />
         <Services />
         <BeforeAfter />
-        <Advantages />
+        <AboutUs />
         <ProcessSteps />
         <ProjectGallery />
         <Testimonials />
-        <ContactCTA />
         <MapSection />
       </main>
       <Footer />

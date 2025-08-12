@@ -73,25 +73,7 @@ const ContactCTA = () => {
           </div>
         </div>
 
-        {/* Service Area */}
-        <div className="mt-16 bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20">
-          <div className="text-center">
-            <h3 className="text-2xl font-semibold text-white mb-4">Unser Servicegebiet</h3>
-            <p className="text-green-100 text-lg mb-6">
-              Wir sind in Duisburg und im Umkreis von 50 km für Sie da
-            </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-white font-medium">
-              <div>Duisburg</div>
-              <div>Oberhausen</div>
-              <div>Mülheim</div>
-              <div>Essen</div>
-              <div>Düsseldorf</div>
-              <div>Krefeld</div>
-              <div>Moers</div>
-              <div>Dinslaken</div>
-            </div>
-          </div>
-        </div>
+
       </div>
     </section>
   );

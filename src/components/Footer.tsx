@@ -9,8 +9,12 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">GLT</span>
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center">
+                <img 
+                  src="/images/glt logo.png" 
+                  alt="GLT Logo" 
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div>
                 <h3 className="text-xl font-semibold">GLT Garten- und Landschaftsbau</h3>

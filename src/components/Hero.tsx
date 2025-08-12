@@ -12,29 +12,29 @@ const Hero = () => {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
+      {/* Background Video with Overlay */}
       <div className="absolute inset-0">
-        <img
-          src="https://images.pexels.com/photos/1005058/pexels-photo-1005058.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
-          alt="Schöner Garten"
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
           className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/30"></div>
+        >
+          <source src="/images/hero video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div className="absolute inset-0 bg-black/65"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-green-900/20 to-transparent"></div>
       </div>
 
-      {/* Animated Plant Growth SVG */}
-      <div className="absolute bottom-0 right-0 w-64 h-64 opacity-20">
-        <PlantGrowthSVG isVisible={isVisible} />
-      </div>
-
       {/* Master Badge */}
-      <div className="absolute top-24 right-8 hidden lg:block">
+      <div className="absolute bottom-8 right-8 hidden lg:block scale-90 origin-bottom-right">
         <MasterBadge />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-24 sm:pt-0">
         <div className={`transform transition-all duration-1000 ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
         }`}>
@@ -49,40 +49,21 @@ const Hero = () => {
             mit handwerklicher Präzision und kreativer Leidenschaft.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="group bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105">
-              <span className="flex items-center">
-                Kostenloses Angebot
-                <span className="ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
-              </span>
-            </button>
-            
-            <button className="group border-2 border-white text-white hover:bg-white hover:text-green-700 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center">
-              <Phone className="w-5 h-5 mr-2 group-hover:animate-pulse" />
-              Rückrufservice
-            </button>
-          </div>
-
-          {/* Key Benefits */}
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-md rounded-lg p-6 border border-white/20">
-              <Award className="w-8 h-8 text-amber-400 mx-auto mb-3" />
-              <h3 className="text-white font-semibold text-lg mb-2">Meisterbetrieb</h3>
-              <p className="text-white/80">Qualität und Expertise seit 2025</p>
-            </div>
-            
-            <div className="bg-white/10 backdrop-blur-md rounded-lg p-6 border border-white/20">
-              <MessageCircle className="w-8 h-8 text-green-400 mx-auto mb-3" />
-              <h3 className="text-white font-semibold text-lg mb-2">Persönlicher Service</h3>
-              <p className="text-white/80">Ihr Ansprechpartner von A bis Z</p>
-            </div>
-            
-            <div className="bg-white/10 backdrop-blur-md rounded-lg p-6 border border-white/20">
-              <div className="w-8 h-8 bg-green-500 rounded-full mx-auto mb-3 flex items-center justify-center">
-                <span className="text-white font-bold text-sm">50km</span>
-              </div>
-              <h3 className="text-white font-semibold text-lg mb-2">Regionaler Service</h3>
-              <p className="text-white/80">Duisburg + 50 km Umkreis</p>
+          {/* Mobile Layout: Cards first, then Buttons */}
+          <div className="flex flex-col">
+            {/* Buttons - Mobile: order-2, Desktop: order-1 */}
+            <div className="order-2 sm:order-1 flex flex-col sm:flex-row gap-4 justify-center items-center mt-8 sm:mt-0">
+              <button className="group bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105">
+                <span className="flex items-center">
+                  Kostenloses Angebot
+                  <span className="ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
+                </span>
+              </button>
+              
+              <button className="group border-2 border-white text-white hover:bg-white hover:text-green-700 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center">
+                <Phone className="w-5 h-5 mr-2 group-hover:animate-pulse" />
+                Rückrufservice
+              </button>
             </div>
           </div>
         </div>

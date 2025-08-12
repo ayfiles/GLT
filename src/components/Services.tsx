@@ -121,16 +121,6 @@ const Services = () => {
             );
           })}
         </div>
-
-        {/* CTA Section */}
-        <div className="text-center mt-16">
-          <p className="text-lg text-gray-700 mb-8">
-            Sie haben Fragen zu unseren Leistungen oder möchten ein individuelles Angebot?
-          </p>
-          <button className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors duration-300 shadow-lg hover:shadow-xl">
-            Kostenlose Beratung vereinbaren
-          </button>
-        </div>
       </div>
     </section>
   );

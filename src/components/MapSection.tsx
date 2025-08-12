@@ -63,17 +63,22 @@ const MapSection = () => {
 
             {/* Tab Content */}
             {activeTab === 'map' && (
-              <div className="bg-gray-100 rounded-2xl p-8 h-96 flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="w-16 h-16 text-green-600 mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Interaktive Karte</h3>
-                  <p className="text-gray-600 mb-4">
-                    Hier würde normalerweise eine Google Maps Integration erscheinen
-                  </p>
-                  <div className="bg-white rounded-lg p-4 shadow-md">
-                    <div className="font-semibold text-gray-900">{contactInfo.address.street}</div>
-                    <div className="text-gray-600">{contactInfo.address.city}</div>
-                  </div>
+              <div className="bg-gray-100 rounded-2xl p-8 h-96">
+                <div className="h-full w-full rounded-xl overflow-hidden shadow-lg">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2488.1234567890123!2d6.8027!3d51.3776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b8c0c0c0c0c0c0%3A0x0!2sGLT+Garten-+und+Landschaftsbau!5e0!3m2!1sde!2sde!4v1234567890123"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="GLT Garten- und Landschaftsbau Standort"
+                  ></iframe>
+                </div>
+                <div className="mt-4 bg-white rounded-lg p-4 shadow-md">
+                  <div className="font-semibold text-gray-900">{contactInfo.address.street}</div>
+                  <div className="text-gray-600">{contactInfo.address.city}</div>
                 </div>
               </div>
             )}
