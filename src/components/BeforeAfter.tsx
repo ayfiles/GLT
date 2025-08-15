@@ -18,12 +18,6 @@ const BeforeAfter = () => {
       after: 'https://images.pexels.com/photos/1105019/pexels-photo-1105019.jpeg?auto=compress&cs=tinysrgb&w=800',
       title: 'Terrassen-Neubau mit Pflasterarbeiten',
       location: 'Duisburg-Homberg'
-    },
-    {
-      before: 'https://images.pexels.com/photos/580832/pexels-photo-580832.jpeg?auto=compress&cs=tinysrgb&w=800',
-      after: 'https://images.pexels.com/photos/1453799/pexels-photo-1453799.jpeg?auto=compress&cs=tinysrgb&w=800',
-      title: 'Vorgarten-Neugestaltung',
-      location: 'Duisburg-Rheinhausen'
     }
   ];
 

@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { 
   Hammer, 
   TreePine, 
   Shield, 
-  Flower2, 
-  Waves, 
   Scissors,
   Car,
-  FileText
+  FileText,
+  Heart,
+  Calendar,
+  Snowflake
 } from 'lucide-react';
 
 const Services = () => {
@@ -22,45 +23,51 @@ const Services = () => {
     },
     {
       icon: Car,
-      title: 'Terrassen',
-      description: 'Individuelle Terrassengestaltung für Ihre Wohlfühloase',
+      title: 'Terrassenbau',
+      description: 'Individuelle Terrassen aus Stein, Holz oder WPC',
       color: 'from-amber-500 to-amber-600'
     },
     {
       icon: Shield,
-      title: 'Sichtschutz & Zäune',
-      description: 'Privatsphäre und Design perfekt kombiniert',
+      title: 'Zaun- und Sichtschutzbau',
+      description: 'Sichtschutz und Zäune für mehr Privatsphäre',
       color: 'from-green-600 to-green-700'
     },
     {
-      icon: Flower2,
-      title: 'Bepflanzungen',
-      description: 'Kreative Gartengestaltung mit nachhaltigen Konzepten',
-      color: 'from-emerald-500 to-emerald-600'
-    },
-    {
       icon: TreePine,
-      title: 'Rollrasen',
-      description: 'Perfekte Rasenflächen für sofortige Ergebnisse',
+      title: 'Verlegung von Rollrasen',
+      description: 'Sofort grüne Flächen – fachgerecht und schnell',
       color: 'from-lime-500 to-lime-600'
     },
     {
-      icon: Waves,
-      title: 'Teichbau',
-      description: 'Wasserlandschaften als besondere Garten-Highlights',
-      color: 'from-blue-500 to-blue-600'
-    },
-    {
       icon: Scissors,
-      title: 'Baumpflege',
-      description: 'Professionelle Pflege für gesunde, schöne Bäume',
+      title: 'Heckenschnitt & Baumfällung',
+      description: 'Pflege und Entfernung von Hecken und Bäumen',
       color: 'from-teal-500 to-teal-600'
     },
     {
+      icon: Heart,
+      title: 'Garten Neu- & Umgestaltung',
+      description: 'Komplette Neuanlage oder Umgestaltung Ihres Gartens',
+      color: 'from-emerald-500 to-emerald-600'
+    },
+    {
       icon: FileText,
-      title: 'Pflegeverträge',
-      description: 'Langfristige Betreuung Ihrer Außenanlagen',
-      color: 'from-indigo-500 to-indigo-600'
+      title: 'Mauer- und Treppenbau',
+      description: 'Stabile Mauern und stilvolle Treppen für Ihren Garten',
+      color: 'from-stone-400 to-stone-600'
+    },
+    {
+      icon: Calendar,
+      title: 'Jahreszeiten-Gartenpflege',
+      description: 'Pflege für Ihren Garten – das ganze Jahr über',
+      color: 'from-blue-500 to-blue-600'
+    },
+    {
+      icon: Snowflake,
+      title: 'Streu- und Winterdienst',
+      description: 'Sicher durch den Winter – wir übernehmen den Streudienst',
+      color: 'from-cyan-500 to-cyan-600'
     }
   ];
 
@@ -77,7 +84,7 @@ const Services = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (

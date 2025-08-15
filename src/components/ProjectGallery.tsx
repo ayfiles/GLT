@@ -1,19 +1,26 @@
-import React, { useState } from 'react';
-import { Filter, X, ExternalLink } from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
+import { Filter, X, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 import GrassLoader from './GrassLoader';
 
 const ProjectGallery = () => {
   const [filter, setFilter] = useState('all');
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [sliderPosition, setSliderPosition] = useState(50);
+  const [isDragging, setIsDragging] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const filters = [
     { id: 'all', label: 'Alle Projekte' },
     { id: 'pflaster', label: 'Pflasterarbeiten' },
-    { id: 'terrassen', label: 'Terrassen' },
-    { id: 'garten', label: 'Gartengestaltung' },
-    { id: 'sichtschutz', label: 'Sichtschutz' },
-    { id: 'teich', label: 'Wasserbau' }
+    { id: 'terrassen', label: 'Terrassenbau' },
+    { id: 'sichtschutz', label: 'Zaun- und Sichtschutzbau' },
+    { id: 'rollrasen', label: 'Rollrasen' },
+    { id: 'hecke-baum', label: 'Heckenschnitt & Baumfällung' },
+    { id: 'umgestaltung', label: 'Garten Neu- & Umgestaltung' },
+    { id: 'mauer-treppe', label: 'Mauer- und Treppenbau' },
+    { id: 'pflege', label: 'Jahreszeiten-Gartenpflege' },
+    { id: 'winterdienst', label: 'Streu- und Winterdienst' }
   ];
 
   const projects = [
@@ -35,53 +42,84 @@ const ProjectGallery = () => {
     },
     {
       id: 3,
-      image: 'https://images.pexels.com/photos/1453799/pexels-photo-1453799.jpeg?auto=compress&cs=tinysrgb&w=800',
-      title: 'Japanischer Garten',
-      category: 'garten',
-      location: 'Duisburg-Rheinhausen',
-      size: 'ca. 120 m²'
+      image: 'https://images.pexels.com/photos/1005058/pexels-photo-1005058.jpeg?auto=compress&cs=tinysrgb&w=800',
+      title: 'Komplette Gartenumgestaltung',
+      category: 'umgestaltung',
+      location: 'Duisburg-Kaiserberg',
+      size: 'ca. 200 m²'
     },
     {
       id: 4,
       image: 'https://images.pexels.com/photos/161097/pexels-photo-161097.jpeg?auto=compress&cs=tinysrgb&w=800',
-      title: 'Sichtschutz mit Bepflanzung',
+      title: 'Sichtschutzzaun aus Holz',
       category: 'sichtschutz',
       location: 'Duisburg-Walsum',
       size: '25 lfd. Meter'
     },
     {
       id: 5,
-      image: 'https://images.pexels.com/photos/2116475/pexels-photo-2116475.jpeg?auto=compress&cs=tinysrgb&w=800',
-      title: 'Gartenteich mit Wasserfall',
-      category: 'teich',
-      location: 'Duisburg-Wedau',
-      size: 'ca. 30 m²'
-    },
-    {
-      id: 6,
-      image: 'https://images.pexels.com/photos/1005058/pexels-photo-1005058.jpeg?auto=compress&cs=tinysrgb&w=800',
-      title: 'Komplette Gartenumgestaltung',
-      category: 'garten',
-      location: 'Duisburg-Kaiserberg',
-      size: 'ca. 200 m²'
-    },
-    {
-      id: 7,
       image: 'https://images.pexels.com/photos/186980/pexels-photo-186980.jpeg?auto=compress&cs=tinysrgb&w=800',
-      title: 'Betonstein-Terrasse',
-      category: 'terrassen',
+      title: 'Rollrasen für den Familiengarten',
+      category: 'rollrasen',
       location: 'Duisburg-Neudorf',
       size: 'ca. 65 m²'
     },
     {
-      id: 8,
-      image: 'https://images.pexels.com/photos/1105766/pexels-photo-1105766.jpeg?auto=compress&cs=tinysrgb&w=800',
-      title: 'Hofpflasterung',
-      category: 'pflaster',
+      id: 6,
+      image: 'https://images.pexels.com/photos/580832/pexels-photo-580832.jpeg?auto=compress&cs=tinysrgb&w=800',
+      title: 'Heckenschnitt & Baumfällung',
+      category: 'hecke-baum',
+      location: 'Duisburg-Rheinhausen',
+      size: 'Gartenanlage'
+    },
+    {
+      id: 7,
+      image: 'https://images.pexels.com/photos/1453799/pexels-photo-1453799.jpeg?auto=compress&cs=tinysrgb&w=800',
+      title: 'Mauer- und Treppenbau',
+      category: 'mauer-treppe',
       location: 'Duisburg-Großenbaum',
-      size: 'ca. 150 m²'
+      size: 'ca. 30 m²'
+    },
+    {
+      id: 8,
+      image: 'https://images.pexels.com/photos/2116475/pexels-photo-2116475.jpeg?auto=compress&cs=tinysrgb&w=800',
+      title: 'Jahreszeiten-Gartenpflege',
+      category: 'pflege',
+      location: 'Duisburg-Wedau',
+      size: 'Garten'
+    },
+    {
+      id: 9,
+      image: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=800',
+      title: 'Streu- und Winterdienst',
+      category: 'winterdienst',
+      location: 'Duisburg',
+      size: 'Winterdienst'
     }
   ];
+
+  const beforeAfterProjects = [
+    {
+      before: '/images/vorher.jpg',
+      after: '/images/naccher.jpg',
+      title: 'Komplette Gartenumgestaltung',
+      location: 'Duisburg-Meiderich'
+    },
+    {
+      before: 'https://images.pexels.com/photos/186980/pexels-photo-186980.jpeg?auto=compress&cs=tinysrgb&w=800',
+      after: 'https://images.pexels.com/photos/1105019/pexels-photo-1105019.jpeg?auto=compress&cs=tinysrgb&w=800',
+      title: 'Terrassen-Neubau mit Pflasterarbeiten',
+      location: 'Duisburg-Homberg'
+    },
+    {
+      before: 'https://images.pexels.com/photos/580832/pexels-photo-580832.jpeg?auto=compress&cs=tinysrgb&w=800',
+      after: 'https://images.pexels.com/photos/1453799/pexels-photo-1453799.jpeg?auto=compress&cs=tinysrgb&w=800',
+      title: 'Vorgarten-Neugestaltung',
+      location: 'Duisburg-Rheinhausen'
+    }
+  ];
+
+  const [currentProject, setCurrentProject] = useState(0);
 
   const filteredProjects = filter === 'all' 
     ? projects 
@@ -104,6 +142,59 @@ const ProjectGallery = () => {
   const closeLightbox = () => {
     setLightboxImage(null);
   };
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !containerRef.current) return;
+    
+    const rect = containerRef.current.getBoundingClientRect();
+    const position = ((e.clientX - rect.left) / rect.width) * 100;
+    setSliderPosition(Math.max(0, Math.min(100, position)));
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  useEffect(() => {
+    const handleGlobalMouseMove = (e: MouseEvent) => {
+      if (!isDragging || !containerRef.current) return;
+      
+      const rect = containerRef.current.getBoundingClientRect();
+      const position = ((e.clientX - rect.left) / rect.width) * 100;
+      setSliderPosition(Math.max(0, Math.min(100, position)));
+    };
+
+    const handleGlobalMouseUp = () => {
+      setIsDragging(false);
+    };
+
+    if (isDragging) {
+      document.addEventListener('mousemove', handleGlobalMouseMove);
+      document.addEventListener('mouseup', handleGlobalMouseUp);
+    }
+
+    return () => {
+      document.removeEventListener('mousemove', handleGlobalMouseMove);
+      document.removeEventListener('mouseup', handleGlobalMouseUp);
+    };
+  }, [isDragging]);
+
+  const nextProject = () => {
+    setCurrentProject((prev) => (prev + 1) % beforeAfterProjects.length);
+    setSliderPosition(50);
+  };
+
+  const prevProject = () => {
+    setCurrentProject((prev) => (prev - 1 + beforeAfterProjects.length) % beforeAfterProjects.length);
+    setSliderPosition(50);
+  };
+
+  const beforeAfterProject = beforeAfterProjects[currentProject];
 
   return (
     <section id="projects" className="py-20 bg-gray-50">
@@ -184,6 +275,120 @@ const ProjectGallery = () => {
             </p>
           </div>
         )}
+
+        {/* Before After Section */}
+        <div className="mt-20">
+          <div className="text-center mb-16">
+            <h3 className="text-4xl font-bold text-gray-900 mb-4">
+              <span className="text-green-600">Vorher</span> & <span className="text-amber-500">Nachher</span>
+            </h3>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Sehen Sie selbst, wie wir Ihre Gartenträume in die Realität umsetzen. 
+              Ziehen Sie den Slider, um die Transformation zu erleben.
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            {/* Project Navigation */}
+            <div className="flex items-center justify-between mb-8">
+              <button
+                onClick={prevProject}
+                className="flex items-center px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors duration-200"
+              >
+                <ChevronLeft className="w-5 h-5 mr-2" />
+                Vorheriges Projekt
+              </button>
+              
+              <div className="text-center">
+                <h3 className="text-xl font-semibold text-gray-900">{beforeAfterProject.title}</h3>
+                <p className="text-gray-600">{beforeAfterProject.location}</p>
+              </div>
+              
+              <button
+                onClick={nextProject}
+                className="flex items-center px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors duration-200"
+              >
+                Nächstes Projekt
+                <ChevronRight className="w-5 h-5 ml-2" />
+              </button>
+            </div>
+
+            {/* Before/After Slider */}
+            <div
+              ref={containerRef}
+              className="relative w-full h-96 md:h-[500px] overflow-hidden rounded-2xl shadow-2xl cursor-col-resize select-none"
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+            >
+              {/* After Image */}
+              <img
+                src={beforeAfterProject.after}
+                alt="Nachher"
+                className="absolute inset-0 w-full h-full object-cover"
+                draggable={false}
+              />
+              
+              {/* Before Image with Clip */}
+              <div
+                className="absolute inset-0 overflow-hidden"
+                style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
+              >
+                <img
+                  src={beforeAfterProject.before}
+                  alt="Vorher"
+                  className="w-full h-full object-cover"
+                  draggable={false}
+                />
+                
+                {/* Before Label */}
+                <div className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                  Vorher
+                </div>
+              </div>
+              
+              {/* After Label */}
+              <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                Nachher
+              </div>
+              
+              {/* Slider Line and Handle */}
+              <div
+                className="absolute top-0 bottom-0 w-0.5 bg-white shadow-lg pointer-events-none"
+                style={{ left: `${sliderPosition}%` }}
+              >
+                {/* Slider Handle */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center pointer-events-auto cursor-col-resize">
+                  <div className="flex space-x-1">
+                    <div className="w-1 h-6 bg-gray-400 rounded"></div>
+                    <div className="w-1 h-6 bg-gray-400 rounded"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Project Indicators */}
+            <div className="flex justify-center mt-8 space-x-2">
+              {beforeAfterProjects.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => {
+                    setCurrentProject(index);
+                    setSliderPosition(50);
+                  }}
+                  className={`w-3 h-3 rounded-full transition-colors duration-200 ${
+                    index === currentProject ? 'bg-green-600' : 'bg-gray-300'
+                  }`}
+                />
+              ))}
+            </div>
+
+            {/* Instructions */}
+            <div className="text-center mt-8 text-gray-600">
+              <p className="text-sm">Ziehen Sie den Slider oder nutzen Sie die Pfeiltasten, um die Transformation zu sehen</p>
+            </div>
+          </div>
+        </div>
 
         {/* Lightbox */}
         {lightboxImage && (

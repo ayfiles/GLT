@@ -14,11 +14,11 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { label: 'Leistungen', href: '#services' },
-    { label: 'Projekte', href: '#projects' },
     { label: 'Über uns', href: '#about' },
+    { label: 'Leistungen', href: '#services' },
     { label: 'Ablauf', href: '#process' },
-    { label: 'Kundenstimmen', href: '#testimonials' },
+    { label: 'Projekte', href: '#projects' },
+    { label: 'Rezensionen', href: '#testimonials' },
     { label: 'Kontakt', href: '#contact' }
   ];
 
@@ -26,10 +26,10 @@ const Header = () => {
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
       isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
     }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
-          {/* Logo */}
-          <div className="flex items-center space-x-3">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+        <div className="flex justify-center items-center py-4 relative">
+          {/* Logo - Absolute positioned left */}
+          <div className="absolute left-0 flex items-center space-x-3">
             <div 
               onClick={() => {
                 document.getElementById('hero')?.scrollIntoView({ 
@@ -46,13 +46,23 @@ const Header = () => {
             </div>
           </div>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - Centered */}
           <nav className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className={`transition-colors duration-200 font-medium ${
+                onClick={(e) => {
+                  e.preventDefault();
+                  const element = document.querySelector(item.href);
+                  if (element) {
+                    element.scrollIntoView({ 
+                      behavior: 'smooth',
+                      block: 'start'
+                    });
+                  }
+                }}
+                className={`transition-colors duration-200 font-medium cursor-pointer ${
                   isScrolled 
                     ? 'text-green-700 hover:text-green-800' 
                     : 'text-white hover:text-green-300'
@@ -63,8 +73,8 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Mobile Menu Button */}
-          <div className="flex items-center">
+          {/* Mobile Menu Button - Absolute positioned right */}
+          <div className="absolute right-0 flex items-center">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={`lg:hidden p-2 transition-colors duration-200 ${

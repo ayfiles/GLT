@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { MapPin, Clock, Phone, Mail } from 'lucide-react';
 
 const MapSection = () => {
@@ -63,8 +63,8 @@ const MapSection = () => {
 
             {/* Tab Content */}
             {activeTab === 'map' && (
-              <div className="bg-gray-100 rounded-2xl p-8 h-96">
-                <div className="h-full w-full rounded-xl overflow-hidden shadow-lg">
+              <div className="bg-gray-100 rounded-2xl p-8 h-auto">
+                <div className="h-[600px] w-full rounded-xl overflow-hidden shadow-lg">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2488.1234567890123!2d6.8027!3d51.3776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b8c0c0c0c0c0c0%3A0x0!2sGLT+Garten-+und+Landschaftsbau!5e0!3m2!1sde!2sde!4v1234567890123"
                     width="100%"
@@ -76,18 +76,14 @@ const MapSection = () => {
                     title="GLT Garten- und Landschaftsbau Standort"
                   ></iframe>
                 </div>
-                <div className="mt-4 bg-white rounded-lg p-4 shadow-md">
-                  <div className="font-semibold text-gray-900">{contactInfo.address.street}</div>
-                  <div className="text-gray-600">{contactInfo.address.city}</div>
-                </div>
               </div>
             )}
 
             {activeTab === 'form' && (
-              <div className="bg-gray-50 rounded-2xl p-8">
+              <div className="bg-gray-50 rounded-2xl p-8 h-auto">
                 <h3 className="text-2xl font-semibold text-gray-900 mb-6">Kontaktformular</h3>
-                <form className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <form className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         Name *
@@ -95,7 +91,7 @@ const MapSection = () => {
                       <input
                         type="text"
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200"
                         placeholder="Ihr Name"
                       />
                     </div>
@@ -106,20 +102,20 @@ const MapSection = () => {
                       <input
                         type="email"
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200"
                         placeholder="ihre.email@beispiel.de"
                       />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         Telefon
                       </label>
                       <input
                         type="tel"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200"
                         placeholder="Ihre Telefonnummer"
                       />
                     </div>
@@ -127,14 +123,17 @@ const MapSection = () => {
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         Gewünschte Leistung
                       </label>
-                      <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200">
+                      <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200">
                         <option>Bitte wählen...</option>
                         <option>Pflasterarbeiten</option>
-                        <option>Terrassen</option>
-                        <option>Gartengestaltung</option>
-                        <option>Sichtschutz</option>
-                        <option>Teichbau</option>
-                        <option>Sonstiges</option>
+                        <option>Terrassenbau</option>
+                        <option>Zaun- und Sichtschutzbau</option>
+                        <option>Verlegung von Rollrasen</option>
+                        <option>Heckenschnitt & Baumfällung</option>
+                        <option>Garten Neu- & Umgestaltung</option>
+                        <option>Mauer- und Treppenbau</option>
+                        <option>Jahreszeiten-Gartenpflege</option>
+                        <option>Streu- und Winterdienst</option>
                       </select>
                     </div>
                   </div>
@@ -144,9 +143,9 @@ const MapSection = () => {
                       Nachricht *
                     </label>
                     <textarea
-                      rows={5}
+                      rows={3}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200"
                       placeholder="Beschreiben Sie Ihr Projekt..."
                     ></textarea>
                   </div>
@@ -155,10 +154,10 @@ const MapSection = () => {
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Dateien hochladen
                     </label>
-                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-green-500 transition-colors duration-200">
+                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center hover:border-green-500 transition-colors duration-200">
                       <div className="text-gray-600">
-                        <p>Bilder oder Pläne hier hineinziehen</p>
-                        <p className="text-sm">oder klicken zum Auswählen</p>
+                        <p className="text-sm">Bilder oder Pläne hier hineinziehen</p>
+                        <p className="text-xs">oder klicken zum Auswählen</p>
                       </div>
                     </div>
                   </div>
@@ -180,7 +179,7 @@ const MapSection = () => {
 
                   <button
                     type="submit"
-                    className="w-full bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors duration-300 shadow-lg hover:shadow-xl"
+                    className="w-full bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-base transition-colors duration-300 shadow-lg hover:shadow-xl"
                   >
                     Nachricht senden
                   </button>

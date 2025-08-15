@@ -29,22 +29,6 @@ const Testimonials = () => {
       rating: 5,
       text: 'Wir sind begeistert von unserem neuen Vorgarten! GLT hat kreative Ideen eingebracht und diese perfekt umgesetzt. Der Service war durchweg freundlich und kompetent.',
       image: 'https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face'
-    },
-    {
-      name: 'Michael Koch',
-      location: 'Duisburg-Walsum',
-      project: 'Teichanlage mit Sitzbereich',
-      rating: 5,
-      text: 'Die Zusammenarbeit mit GLT war von Anfang an sehr angenehm. Kompetente Beratung, faire Preise und eine Ausführung, die keine Wünsche offen lässt. Unser Gartenteich ist ein Traum geworden!',
-      image: 'https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face'
-    },
-    {
-      name: 'Familie Becker',
-      location: 'Duisburg-Wedau',
-      project: 'Sichtschutz und Bepflanzung',
-      rating: 5,
-      text: 'GLT hat uns einen wunderschönen Sichtschutz geschaffen, der perfekt in unseren Garten passt. Die Beratung war sehr detailliert und die Umsetzung erfolgte schnell und sauber.',
-      image: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=face'
     }
   ];
 

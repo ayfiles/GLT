@@ -16,9 +16,8 @@ function App() {
       <Header />
       <main>
         <Hero />
-        <Services />
-        <BeforeAfter />
         <AboutUs />
+        <Services />
         <ProcessSteps />
         <ProjectGallery />
         <Testimonials />

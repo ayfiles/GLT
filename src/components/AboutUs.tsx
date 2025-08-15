@@ -41,10 +41,14 @@ const AboutUs = () => {
             </div>
           </div>
 
-          {/* Placeholder image (Team) */}
+          {/* Team Image */}
           <div className="w-full">
-            <div className="w-full h-64 md:h-80 lg:h-[22rem] bg-gray-200/70 rounded-2xl border border-gray-300/40 shadow-inner flex items-center justify-center text-gray-600">
-              <span className="text-sm md:text-base">Teamfoto folgt</span>
+            <div className="w-full h-64 md:h-80 lg:h-[22rem] rounded-2xl overflow-hidden shadow-lg bg-gray-100">
+              <img 
+                src="/images/team image.jpg" 
+                alt="GLT Team" 
+                className="w-full h-full object-contain"
+              />
             </div>
           </div>
         </div>
