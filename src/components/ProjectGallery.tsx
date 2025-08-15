@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Filter, X, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 import GrassLoader from './GrassLoader';
+import beforeImg from '../assets/vorher.jpg';
+import afterImg from '../assets/naccher.jpg';
 
 const ProjectGallery = () => {
   const [filter, setFilter] = useState('all');
@@ -100,8 +102,8 @@ const ProjectGallery = () => {
 
   const beforeAfterProjects = [
     {
-      before: '/images/vorher.jpg',
-      after: '/images/naccher.jpg',
+      before: beforeImg,
+      after: afterImg,
       title: 'Komplette Gartenumgestaltung',
       location: 'Duisburg-Meiderich'
     },

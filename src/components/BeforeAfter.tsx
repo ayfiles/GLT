@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import beforeImg from '../assets/vorher.jpg';
+import afterImg from '../assets/naccher.jpg';
 
 const BeforeAfter = () => {
   const [sliderPosition, setSliderPosition] = useState(50);
@@ -8,8 +10,8 @@ const BeforeAfter = () => {
 
   const projects = [
     {
-      before: '/images/vorher.jpg',
-      after: '/images/naccher.jpg',
+      before: beforeImg,
+      after: afterImg,
       title: 'Komplette Gartenumgestaltung',
       location: 'Duisburg-Meiderich'
     },

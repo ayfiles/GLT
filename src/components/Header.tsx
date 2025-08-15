@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Phone, Mail } from 'lucide-react';
+import gltLogo from '../assets/glt-logo.png';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -39,7 +40,7 @@ const Header = () => {
               className="w-20 h-20 rounded-lg flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity duration-200"
             >
               <img 
-                src="/images/glt-logo.png" 
+                src={gltLogo} 
                 alt="GLT Logo" 
                 className="w-full h-full object-contain"
               />

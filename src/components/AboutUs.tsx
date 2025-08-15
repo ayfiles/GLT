@@ -1,5 +1,6 @@
 import React from 'react';
 import { Award, Users, Heart, MapPin, Phone, Calendar } from 'lucide-react';
+import teamImage from '../assets/team-image.jpg';
 
 const AboutUs = () => {
   return (
@@ -45,7 +46,7 @@ const AboutUs = () => {
           <div className="w-full">
             <div className="w-full h-64 md:h-80 lg:h-[22rem] rounded-2xl overflow-hidden shadow-lg bg-gray-100">
               <img 
-                src="/images/team-image.jpg" 
+                src={teamImage} 
                 alt="GLT Team" 
                 className="w-full h-full object-contain"
               />
