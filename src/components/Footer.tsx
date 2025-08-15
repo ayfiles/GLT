@@ -11,7 +11,7 @@ const Footer = () => {
             <div className="flex items-center space-x-3 mb-6">
               <div className="w-12 h-12 rounded-lg flex items-center justify-center">
                 <img 
-                  src="/images/glt logo.png" 
+                  src="/images/glt-logo.png" 
                   alt="GLT Logo" 
                   className="w-full h-full object-contain"
                 />

@@ -39,7 +39,7 @@ const Header = () => {
               className="w-20 h-20 rounded-lg flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity duration-200"
             >
               <img 
-                src="/images/glt logo.png" 
+                src="/images/glt-logo.png" 
                 alt="GLT Logo" 
                 className="w-full h-full object-contain"
               />
