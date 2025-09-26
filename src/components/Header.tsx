@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Phone, Mail } from 'lucide-react';
-import gltLogo from '../assets/glt-logo.png';
+import gltLogo from '../assets/glt-logo.svg';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -18,26 +18,35 @@ const Header = () => {
     { label: 'Über uns', href: '#about' },
     { label: 'Leistungen', href: '#services' },
     { label: 'Ablauf', href: '#process' },
-    { label: 'Projekte', href: '#projects' },
-    { label: 'Rezensionen', href: '#testimonials' },
+    { label: 'Referenzen', href: '#projects' },
     { label: 'Kontakt', href: '#contact' }
   ];
+
+  const handleLogoClick = () => {
+    const isHome = window.location.pathname === '/';
+    if (!isHome) {
+      window.location.href = '/';
+      return;
+    }
+    const hero = document.getElementById('hero');
+    if (hero) {
+      hero.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
       isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
     }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
-        <div className="flex justify-center items-center py-4 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5">
+        <div className="flex justify-center items-center py-5 relative">
           {/* Logo - Absolute positioned left */}
           <div className="absolute left-0 flex items-center space-x-3">
             <div 
-              onClick={() => {
-                document.getElementById('hero')?.scrollIntoView({ 
-                  behavior: 'smooth' 
-                });
-              }}
-              className="w-20 h-20 rounded-lg flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity duration-200"
+              onClick={handleLogoClick}
+              className="w-24 h-24 rounded-lg flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity duration-200"
             >
               <img 
                 src={gltLogo} 
@@ -48,7 +57,7 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation - Centered */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-10 text-lg">
             {navItems.map((item) => (
               <a
                 key={item.label}

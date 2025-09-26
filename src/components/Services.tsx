@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { 
-  Hammer, 
-  TreePine, 
-  Shield, 
+  Hammer, // masonry / paving
+  TreesIcon as Trees,
+  Fence,
   Scissors,
-  Car,
-  FileText,
-  Heart,
+  Ruler,
+  BrickWall,
+  Paintbrush2,
   Calendar,
   Snowflake
 } from 'lucide-react';
@@ -22,19 +22,19 @@ const Services = () => {
       color: 'from-stone-500 to-stone-600'
     },
     {
-      icon: Car,
+      icon: Ruler,
       title: 'Terrassenbau',
       description: 'Individuelle Terrassen aus Stein, Holz oder WPC',
       color: 'from-amber-500 to-amber-600'
     },
     {
-      icon: Shield,
+      icon: Fence,
       title: 'Zaun- und Sichtschutzbau',
       description: 'Sichtschutz und Zäune für mehr Privatsphäre',
       color: 'from-green-600 to-green-700'
     },
     {
-      icon: TreePine,
+      icon: Trees,
       title: 'Verlegung von Rollrasen',
       description: 'Sofort grüne Flächen – fachgerecht und schnell',
       color: 'from-lime-500 to-lime-600'
@@ -46,13 +46,13 @@ const Services = () => {
       color: 'from-teal-500 to-teal-600'
     },
     {
-      icon: Heart,
+      icon: Paintbrush2,
       title: 'Garten Neu- & Umgestaltung',
       description: 'Komplette Neuanlage oder Umgestaltung Ihres Gartens',
       color: 'from-emerald-500 to-emerald-600'
     },
     {
-      icon: FileText,
+      icon: BrickWall,
       title: 'Mauer- und Treppenbau',
       description: 'Stabile Mauern und stilvolle Treppen für Ihren Garten',
       color: 'from-stone-400 to-stone-600'

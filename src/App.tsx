@@ -6,7 +6,6 @@ import BeforeAfter from './components/BeforeAfter';
 import AboutUs from './components/AboutUs';
 import ProcessSteps from './components/ProcessSteps';
 import ProjectGallery from './components/ProjectGallery';
-import Testimonials from './components/Testimonials';
 import MapSection from './components/MapSection';
 import Footer from './components/Footer';
 
@@ -20,7 +19,6 @@ function App() {
         <Services />
         <ProcessSteps />
         <ProjectGallery />
-        <Testimonials />
         <MapSection />
       </main>
       <Footer />

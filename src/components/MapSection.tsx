@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { MapPin, Clock, Phone, Mail } from 'lucide-react';
 
 const MapSection = () => {
-  const [activeTab, setActiveTab] = useState('map');
+  const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
 
   const contactInfo = {
     address: {
@@ -11,9 +11,9 @@ const MapSection = () => {
       coordinates: { lat: 51.3776, lng: 6.8027 }
     },
     hours: [
-      { day: 'Montag - Freitag', time: '07:00 - 17:00 Uhr' },
-      { day: 'Samstag', time: '08:00 - 14:00 Uhr' },
-      { day: 'Sonntag', time: 'Nach Vereinbarung' }
+      { day: 'Montag - Freitag', time: '09:00 - 16:00 Uhr' },
+      { day: 'Samstag', time: 'Geschlossen' },
+      { day: 'Sonntag', time: 'Geschlossen' }
     ],
     contact: {
       phone: '0176 31697541',
@@ -26,61 +26,17 @@ const MapSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Finden Sie <span className="text-green-600">uns</span>
+            Nehmen Sie <span className="text-green-600">Kontakt</span> auf
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Besuchen Sie uns in Duisburg oder vereinbaren Sie einen Termin für eine 
-            kostenlose Besichtigung vor Ort in unserem Servicegebiet.
+            Schreiben Sie uns Ihr Anliegen – wir melden uns schnellstmöglich bei Ihnen.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Map/Contact Tabs */}
+          {/* Kontaktformular */}
           <div className="lg:col-span-2">
-            {/* Tab Navigation */}
-            <div className="flex mb-6 bg-gray-100 rounded-lg p-1">
-              <button
-                onClick={() => setActiveTab('map')}
-                className={`flex-1 py-3 px-6 rounded-md font-medium transition-colors duration-200 ${
-                  activeTab === 'map'
-                    ? 'bg-white text-green-600 shadow-md'
-                    : 'text-gray-600 hover:text-green-600'
-                }`}
-              >
-                Karte & Anfahrt
-              </button>
-              <button
-                onClick={() => setActiveTab('form')}
-                className={`flex-1 py-3 px-6 rounded-md font-medium transition-colors duration-200 ${
-                  activeTab === 'form'
-                    ? 'bg-white text-green-600 shadow-md'
-                    : 'text-gray-600 hover:text-green-600'
-                }`}
-              >
-                Kontaktformular
-              </button>
-            </div>
-
-            {/* Tab Content */}
-            {activeTab === 'map' && (
-              <div className="bg-gray-100 rounded-2xl p-8 h-auto">
-                <div className="h-[600px] w-full rounded-xl overflow-hidden shadow-lg">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2488.1234567890123!2d6.8027!3d51.3776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b8c0c0c0c0c0c0%3A0x0!2sGLT+Garten-+und+Landschaftsbau!5e0!3m2!1sde!2sde!4v1234567890123"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="GLT Garten- und Landschaftsbau Standort"
-                  ></iframe>
-                </div>
-              </div>
-            )}
-
-            {activeTab === 'form' && (
-              <div className="bg-gray-50 rounded-2xl p-8 h-auto">
+            <div className="bg-gray-50 rounded-2xl p-8 h-auto">
                 <h3 className="text-2xl font-semibold text-gray-900 mb-6">Kontaktformular</h3>
                 <form className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -150,17 +106,7 @@ const MapSection = () => {
                     ></textarea>
                   </div>
 
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Dateien hochladen
-                    </label>
-                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center hover:border-green-500 transition-colors duration-200">
-                      <div className="text-gray-600">
-                        <p className="text-sm">Bilder oder Pläne hier hineinziehen</p>
-                        <p className="text-xs">oder klicken zum Auswählen</p>
-                      </div>
-                    </div>
-                  </div>
+                  
 
                   <div className="flex items-start">
                     <input
@@ -170,9 +116,9 @@ const MapSection = () => {
                     />
                     <label className="text-sm text-gray-600">
                       Ich stimme der Verarbeitung meiner Daten entsprechend der{' '}
-                      <a href="#" className="text-green-600 hover:underline">
+                      <button type="button" onClick={() => setIsPrivacyOpen(true)} className="text-green-600 hover:underline">
                         Datenschutzerklärung
-                      </a>{' '}
+                      </button>{' '}
                       zu. *
                     </label>
                   </div>
@@ -185,7 +131,6 @@ const MapSection = () => {
                   </button>
                 </form>
               </div>
-            )}
           </div>
 
           {/* Contact Info Sidebar */}
@@ -256,6 +201,27 @@ const MapSection = () => {
           </div>
         </div>
       </div>
+
+      {/* Datenschutzerklärung Lightbox */}
+      {isPrivacyOpen && (
+        <div className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4" role="dialog" aria-modal="true">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[80vh] overflow-auto">
+            <div className="flex items-center justify-between p-4 border-b">
+              <h3 className="text-xl font-semibold text-gray-900">Datenschutzerklärung</h3>
+              <button aria-label="Schließen" onClick={() => setIsPrivacyOpen(false)} className="text-gray-500 hover:text-gray-800 px-2 py-1">✕</button>
+            </div>
+            <div className="p-6 space-y-4 text-gray-700">
+              <p>Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Ihre Angaben aus dem Kontaktformular werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und nicht ohne Ihre ausdrückliche Einwilligung an Dritte weitergegeben.</p>
+              <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung) und Art. 6 Abs. 1 lit. a DSGVO (Einwilligung). Sie können eine erteilte Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen.</p>
+              <p>Verantwortlicher: Sinan Gültekin, GLT Garten- und Landschaftsbau, Ritterstraße 49, 47228 Duisburg. Kontakt: info@glt.de</p>
+              <p>Weitere Informationen zu Speicherfristen, Betroffenenrechten (Auskunft, Berichtigung, Löschung, Einschränkung, Widerspruch, Datenübertragbarkeit) und Beschwerderecht bei einer Aufsichtsbehörde finden Sie in unserer vollständigen Datenschutzerklärung.</p>
+            </div>
+            <div className="p-4 border-t flex justify-end">
+              <button onClick={() => setIsPrivacyOpen(false)} className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg">Schließen</button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

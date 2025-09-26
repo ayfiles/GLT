@@ -7,37 +7,28 @@ const AboutUs = () => {
     <section id="about" className="py-20 bg-gradient-to-br from-green-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Über <span className="text-green-600">GLT</span>
-          </h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">Über uns</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ihr Meisterbetrieb für Garten- und Landschaftsbau in Duisburg. 
-            Seit 2025 setzen wir Ihre Gartenträume mit handwerklicher Präzision und kreativer Leidenschaft um.
+            GLT-Gartenbau – Ihr Gartenbau-Meisterbetrieb für Qualität und Leidenschaft
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-8">
           {/* Company Story */}
           <div>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-6">Unsere Geschichte</h3>
+            <h3 className="text-2xl font-semibold text-gray-900 mb-6">Über uns</h3>
             <div className="space-y-4 text-gray-600">
               <p>
-                GLT Garten- und Landschaftsbau wurde 2025 mit dem Ziel gegründet, 
-                außergewöhnliche Gartenprojekte in Duisburg und Umgebung zu realisieren. 
-                Als Meisterbetrieb setzen wir auf höchste Qualitätsstandards und 
-                innovative Lösungen für jeden Garten.
+                Wir von GLT-Gartenbau sind ein Gartenbau-Meisterbetrieb, der mit Fachwissen, Erfahrung und viel Liebe zum Detail grüne Lebensräume gestaltet. Als Meisterbetrieb stehen wir für höchste handwerkliche Qualität, Zuverlässigkeit und individuelle Lösungen, die perfekt auf Ihre Wünsche zugeschnitten sind.
               </p>
               <p>
-                Unser Team vereint jahrelange Erfahrung mit modernen Arbeitsmethoden 
-                und einer tiefen Leidenschaft für Garten- und Landschaftsbau. 
-                Wir verstehen, dass jeder Garten einzigartig ist und gestalten 
-                maßgeschneiderte Lösungen für Ihre individuellen Wünsche.
+                Unser Leistungsspektrum reicht von der kreativen Gartenplanung über Pflaster- und Natursteinarbeiten bis hin zur Pflege und Neugestaltung von Grünanlagen. Dabei verbinden wir traditionelles Handwerk mit modernen Ideen und setzen auf nachhaltige Materialien und Lösungen.
               </p>
               <p>
-                Als regional verwurzeltes Unternehmen kennen wir die lokalen 
-                Gegebenheiten und sind schnell vor Ort. Von der ersten Beratung 
-                bis zur finalen Abnahme begleiten wir Sie persönlich durch 
-                Ihr gesamtes Projekt.
+                Ob kleiner Privatgarten oder große Außenanlage – wir begleiten Sie von der ersten Beratung bis zur fertigen Umsetzung und schaffen Gärten, die zum Verweilen und Wohlfühlen einladen.
+              </p>
+              <p>
+                GLT-Gartenbau – Ihr Meisterbetrieb für Gartenbau mit Herz und Verstand.
               </p>
             </div>
           </div>

@@ -1,8 +1,10 @@
 import React from 'react';
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
-import gltLogo from '../assets/glt-logo.png';
+import gltLogo from '../assets/glt-logo.svg';
 
-const Footer = () => {
+type FooterProps = { hideLinks?: boolean };
+
+const Footer: React.FC<FooterProps> = ({ hideLinks }) => {
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -41,12 +43,23 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-6 text-green-400">Navigation</h4>
             <ul className="space-y-3">
-              <li><a href="#hero" className="text-gray-300 hover:text-white transition-colors duration-200">Start</a></li>
-              <li><a href="#services" className="text-gray-300 hover:text-white transition-colors duration-200">Leistungen</a></li>
-              <li><a href="#projects" className="text-gray-300 hover:text-white transition-colors duration-200">Projekte</a></li>
-              <li><a href="#process" className="text-gray-300 hover:text-white transition-colors duration-200">Ablauf</a></li>
-              <li><a href="#testimonials" className="text-gray-300 hover:text-white transition-colors duration-200">Kundenstimmen</a></li>
-              <li><a href="#contact" className="text-gray-300 hover:text-white transition-colors duration-200">Kontakt</a></li>
+              {hideLinks ? (
+                <>
+                  <li className="text-gray-500">Start</li>
+                  <li className="text-gray-500">Leistungen</li>
+                  <li className="text-gray-500">Referenzen</li>
+                  <li className="text-gray-500">Ablauf</li>
+                  <li className="text-gray-500">Kontakt</li>
+                </>
+              ) : (
+                <>
+                  <li><a href="/#hero" className="text-gray-300 hover:text-white transition-colors duration-200">Start</a></li>
+                  <li><a href="/#services" className="text-gray-300 hover:text-white transition-colors duration-200">Leistungen</a></li>
+                  <li><a href="/#projects" className="text-gray-300 hover:text-white transition-colors duration-200">Referenzen</a></li>
+                  <li><a href="/#process" className="text-gray-300 hover:text-white transition-colors duration-200">Ablauf</a></li>
+                  <li><a href="/#contact" className="text-gray-300 hover:text-white transition-colors duration-200">Kontakt</a></li>
+                </>
+              )}
             </ul>
           </div>
 
@@ -65,21 +78,7 @@ const Footer = () => {
               </a>
             </div>
 
-            {/* Social Media */}
-            <div className="mt-6">
-              <h5 className="text-sm font-semibold mb-3 text-green-400">Folgen Sie uns</h5>
-              <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  <Facebook className="w-5 h-5" />
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  <Instagram className="w-5 h-5" />
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  <Linkedin className="w-5 h-5" />
-                </a>
-              </div>
-            </div>
+            
           </div>
         </div>
 
@@ -90,9 +89,19 @@ const Footer = () => {
               © 2025 GLT Garten- und Landschaftsbau. Alle Rechte vorbehalten.
             </div>
             <div className="flex space-x-6 text-sm">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">Impressum</a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">Datenschutz</a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">AGB</a>
+              {hideLinks ? (
+                <>
+                  <span className="text-gray-500">Impressum</span>
+                  <span className="text-gray-500">Datenschutz</span>
+                  <span className="text-gray-500">AGB</span>
+                </>
+              ) : (
+                <>
+                  <a href="/impressum" className="text-gray-400 hover:text-white transition-colors duration-200">Impressum</a>
+                  <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">Datenschutz</a>
+                  <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">AGB</a>
+                </>
+              )}
             </div>
           </div>
         </div>

@@ -53,17 +53,12 @@ const Hero = () => {
           {/* Mobile Layout: Cards first, then Buttons */}
           <div className="flex flex-col">
             {/* Buttons - Mobile: order-2, Desktop: order-1 */}
-            <div className="order-2 sm:order-1 flex flex-col sm:flex-row gap-4 justify-center items-center mt-8 sm:mt-0">
-              <button className="group bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105">
+            <div className="order-2 sm:order-1 flex flex-col gap-4 justify-center items-center mt-8 sm:mt-0">
+              <button className="group bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105">
                 <span className="flex items-center">
                   Kostenloses Angebot
                   <span className="ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
                 </span>
-              </button>
-              
-              <button className="group border-2 border-white text-white hover:bg-white hover:text-green-700 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center">
-                <Phone className="w-5 h-5 mr-2 group-hover:animate-pulse" />
-                Rückrufservice
               </button>
             </div>
           </div>
