@@ -54,7 +54,17 @@ const Hero = () => {
           <div className="flex flex-col">
             {/* Buttons - Mobile: order-2, Desktop: order-1 */}
             <div className="order-2 sm:order-1 flex flex-col gap-4 justify-center items-center mt-8 sm:mt-0">
-              <button className="group bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105">
+              <button
+                onClick={() => {
+                  const el = document.querySelector('#contact');
+                  if (el) {
+                    (el as HTMLElement).scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  } else {
+                    window.location.href = '/#contact';
+                  }
+                }}
+                className="group bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105"
+              >
                 <span className="flex items-center">
                   Kostenloses Angebot
                   <span className="ml-2 transform group-hover:translate-x-1 transition-transform">→</span>

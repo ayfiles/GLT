@@ -38,7 +38,18 @@ const MapSection = () => {
           <div className="lg:col-span-2">
             <div className="bg-gray-50 rounded-2xl p-8 h-auto">
                 <h3 className="text-2xl font-semibold text-gray-900 mb-6">Kontaktformular</h3>
-                <form className="space-y-4">
+                <form className="space-y-4" onSubmit={(e)=>{e.preventDefault();
+                  const form=e.currentTarget as HTMLFormElement;
+                  const data=new FormData(form);
+                  const name=String(data.get('name')||'');
+                  const email=String(data.get('email')||'');
+                  const phone=String(data.get('phone')||'');
+                  const service=String(data.get('service')||'');
+                  const message=String(data.get('message')||'');
+                  const subject=encodeURIComponent(`Neue Anfrage von ${name}`);
+                  const body=encodeURIComponent([`Name: ${name}`,`E-Mail: ${email}`,`Telefon: ${phone}`,`Gewünschte Leistung: ${service}`,'', 'Nachricht:', message].join('\n'));
+                  window.location.href=`mailto:info@glt.de?subject=${subject}&body=${body}`;
+                }}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -49,7 +60,7 @@ const MapSection = () => {
                         required
                         className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200"
                         placeholder="Ihr Name"
-                      />
+                        name="name" />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -60,7 +71,7 @@ const MapSection = () => {
                         required
                         className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200"
                         placeholder="ihre.email@beispiel.de"
-                      />
+                        name="email" />
                     </div>
                   </div>
 
@@ -73,13 +84,13 @@ const MapSection = () => {
                         type="tel"
                         className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200"
                         placeholder="Ihre Telefonnummer"
-                      />
+                        name="phone" />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         Gewünschte Leistung
                       </label>
-                      <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200">
+                      <select name="service" className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200">
                         <option>Bitte wählen...</option>
                         <option>Pflasterarbeiten</option>
                         <option>Terrassenbau</option>
@@ -103,7 +114,7 @@ const MapSection = () => {
                       required
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors duration-200"
                       placeholder="Beschreiben Sie Ihr Projekt..."
-                    ></textarea>
+                      name="message"></textarea>
                   </div>
 
                   
