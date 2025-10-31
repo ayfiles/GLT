@@ -113,13 +113,17 @@ const Header = () => {
                 </a>
               ))}
               <div className="border-t border-gray-100 pt-2 mt-2">
+                <a href="tel:020659079713" className="flex items-center text-green-700 px-3 py-2 rounded-lg hover:bg-green-50">
+                  <Phone className="w-4 h-4 mr-2" />
+                  02065/9079713
+                </a>
                 <a href="tel:017631697541" className="flex items-center text-green-700 px-3 py-2 rounded-lg hover:bg-green-50">
                   <Phone className="w-4 h-4 mr-2" />
                   0176 31697541
                 </a>
-                <a href="mailto:info@glt.de" className="flex items-center text-green-700 px-3 py-2 rounded-lg hover:bg-green-50">
+                <a href="mailto:info@glt-gartenbau.de" className="flex items-center text-green-700 px-3 py-2 rounded-lg hover:bg-green-50">
                   <Mail className="w-4 h-4 mr-2" />
-                  info@glt.de
+                  info@glt-gartenbau.de
                 </a>
               </div>
             </nav>

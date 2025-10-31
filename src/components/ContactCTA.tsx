@@ -25,24 +25,28 @@ const ContactCTA = () => {
 
         {/* Contact Options */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          <a
-            href="tel:017631697541"
+          <div
             className="group bg-white/10 backdrop-blur-md rounded-xl p-6 text-center hover:bg-white/20 transition-all duration-300 border border-white/20"
           >
             <Phone className="w-10 h-10 text-amber-300 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
             <h3 className="text-white font-semibold text-lg mb-2">Anrufen</h3>
             <p className="text-green-100 text-sm">Sofortige Beratung</p>
-            <div className="text-amber-300 font-medium mt-2">0176 31697541</div>
-          </a>
+            <div className="text-amber-300 font-medium mt-2">
+              <a href="tel:020659079713" className="hover:underline">02065/9079713</a>
+            </div>
+            <div className="text-amber-300 font-medium mt-1">
+              <a href="tel:017631697541" className="hover:underline">0176 31697541</a>
+            </div>
+          </div>
 
           <a
-            href="mailto:info@glt.de"
+            href="mailto:info@glt-gartenbau.de"
             className="group bg-white/10 backdrop-blur-md rounded-xl p-6 text-center hover:bg-white/20 transition-all duration-300 border border-white/20"
           >
             <Mail className="w-10 h-10 text-amber-300 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
             <h3 className="text-white font-semibold text-lg mb-2">E-Mail</h3>
             <p className="text-green-100 text-sm">Detaillierte Anfrage</p>
-            <div className="text-amber-300 font-medium mt-2">info@glt.de</div>
+            <div className="text-amber-300 font-medium mt-2">info@glt-gartenbau.de</div>
           </a>
 
           <button className="group bg-white/10 backdrop-blur-md rounded-xl p-6 text-center hover:bg-white/20 transition-all duration-300 border border-white/20">

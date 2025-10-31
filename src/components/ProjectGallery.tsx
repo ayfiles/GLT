@@ -1,7 +1,18 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 const ProjectGallery = () => {
-  const references = Array.from({ length: 9 }, (_, i) => `https://placehold.co/800x500/EEF2F7/4B5563?text=Referenz+${i + 1}`);
+  // Load all images named like "reference X.ext" from assets folder
+  const references = useMemo(() => {
+    const modules = import.meta.glob('../assets/reference *.{jpg,jpeg,png,webp}', { eager: true, as: 'url' });
+    const entries = Object.entries(modules).map(([path, url]) => {
+      const match = path.match(/reference\s*(\d+)/i);
+      const order = match ? parseInt(match[1], 10) : Number.MAX_SAFE_INTEGER;
+      return { url: url as string, order };
+    });
+    return entries
+      .sort((a, b) => a.order - b.order)
+      .map((e) => e.url);
+  }, []);
 
   const [index, setIndex] = useState(0);
 

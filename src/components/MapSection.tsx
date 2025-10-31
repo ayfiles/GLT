@@ -16,8 +16,9 @@ const MapSection = () => {
       { day: 'Sonntag', time: 'Geschlossen' }
     ],
     contact: {
-      phone: '0176 31697541',
-      email: 'info@glt.de'
+      phoneLandline: '02065/9079713',
+      phoneMobile: '0176 31697541',
+      email: 'info@glt-gartenbau.de'
     }
   };
 
@@ -48,7 +49,7 @@ const MapSection = () => {
                   const message=String(data.get('message')||'');
                   const subject=encodeURIComponent(`Neue Anfrage von ${name}`);
                   const body=encodeURIComponent([`Name: ${name}`,`E-Mail: ${email}`,`Telefon: ${phone}`,`Gewünschte Leistung: ${service}`,'', 'Nachricht:', message].join('\n'));
-                  window.location.href=`mailto:info@glt.de?subject=${subject}&body=${body}`;
+                  window.location.href=`mailto:info@glt-gartenbau.de?subject=${subject}&body=${body}`;
                 }}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
@@ -183,11 +184,18 @@ const MapSection = () => {
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Direkter Kontakt</h3>
               <div className="space-y-4">
                 <a
-                  href={`tel:${contactInfo.contact.phone}`}
+                  href={`tel:${contactInfo.contact.phoneLandline.replace(/\s/g,'')}`}
                   className="flex items-center p-3 bg-green-50 rounded-lg hover:bg-green-100 transition-colors duration-200"
                 >
                   <Phone className="w-5 h-5 text-green-600 mr-3" />
-                  <span className="text-gray-900 font-medium">{contactInfo.contact.phone}</span>
+                  <span className="text-gray-900 font-medium">{contactInfo.contact.phoneLandline}</span>
+                </a>
+                <a
+                  href={`tel:${contactInfo.contact.phoneMobile.replace(/\s/g,'')}`}
+                  className="flex items-center p-3 bg-green-50 rounded-lg hover:bg-green-100 transition-colors duration-200"
+                >
+                  <Phone className="w-5 h-5 text-green-600 mr-3" />
+                  <span className="text-gray-900 font-medium">{contactInfo.contact.phoneMobile}</span>
                 </a>
                 <a
                   href={`mailto:${contactInfo.contact.email}`}
@@ -224,7 +232,7 @@ const MapSection = () => {
             <div className="p-6 space-y-4 text-gray-700">
               <p>Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Ihre Angaben aus dem Kontaktformular werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und nicht ohne Ihre ausdrückliche Einwilligung an Dritte weitergegeben.</p>
               <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung) und Art. 6 Abs. 1 lit. a DSGVO (Einwilligung). Sie können eine erteilte Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen.</p>
-              <p>Verantwortlicher: Sinan Gültekin, GLT Garten- und Landschaftsbau, Ritterstraße 49, 47228 Duisburg. Kontakt: info@glt.de</p>
+              <p>Verantwortlicher: Sinan Gültekin, GLT Garten- und Landschaftsbau, Ritterstraße 49, 47228 Duisburg. Kontakt: info@glt-gartenbau.de</p>
               <p>Weitere Informationen zu Speicherfristen, Betroffenenrechten (Auskunft, Berichtigung, Löschung, Einschränkung, Widerspruch, Datenübertragbarkeit) und Beschwerderecht bei einer Aufsichtsbehörde finden Sie in unserer vollständigen Datenschutzerklärung.</p>
             </div>
             <div className="p-4 border-t flex justify-end">

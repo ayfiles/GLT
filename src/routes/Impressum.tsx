@@ -19,7 +19,7 @@ const Impressum: React.FC = () => {
               <p>GLT-Gartenbau</p>
               <p>Ritterstr. 49<br />47228 Duisburg</p>
               <p className="mt-4"><span className="font-semibold">Vertreten durch:</span><br />Sinan Gültekin</p>
-              <p className="mt-4"><span className="font-semibold">Kontakt:</span><br />Telefon: 0176-31697541<br />E-Mail: info@glt.de</p>
+              <p className="mt-4"><span className="font-semibold">Kontakt:</span><br />Telefon: 02065/9079713<br />Mobil: 0176 31697541<br />E-Mail: info@glt-gartenbau.de</p>
               <p className="mt-4"><span className="font-semibold">Berufsbezeichnung:</span> Garten- &amp; Landschaftsbauer Meister</p>
               <p>Berufsrechtliche Regelungen: Handwerksordnung (HwO), <a href="https://www.gesetze-im-internet.de/hwo/" className="text-green-600 hover:underline">https://www.gesetze-im-internet.de/hwo/</a></p>
               <p>Staat der Zulassung: Bundesrepublik Deutschland</p>

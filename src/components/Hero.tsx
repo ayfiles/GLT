@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Phone, MessageCircle, Award } from 'lucide-react';
 import PlantGrowthSVG from './PlantGrowthSVG';
 import MasterBadge from './MasterBadge';
-import heroVideo from '../assets/hero-video.mp4';
+import heroVideo from '../assets/hero-video.webm';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -22,7 +22,7 @@ const Hero = () => {
           playsInline
           className="w-full h-full object-cover"
         >
-          <source src={heroVideo} type="video/mp4" />
+          <source src={heroVideo} type="video/webm" />
           Your browser does not support the video tag.
         </video>
         <div className="absolute inset-0 bg-black/65"></div>

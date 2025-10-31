@@ -67,14 +67,18 @@ const Footer: React.FC<FooterProps> = ({ hideLinks }) => {
           <div>
             <h4 className="text-lg font-semibold mb-6 text-green-400">Kontakt</h4>
             <div className="space-y-4">
+              <a href="tel:020659079713" className="flex items-center text-gray-300 hover:text-white transition-colors duration-200">
+                <Phone className="w-5 h-5 text-green-400 mr-3" />
+                02065/9079713
+              </a>
               <a href="tel:017631697541" className="flex items-center text-gray-300 hover:text-white transition-colors duration-200">
                 <Phone className="w-5 h-5 text-green-400 mr-3" />
                 0176 31697541
               </a>
               
-              <a href="mailto:info@glt.de" className="flex items-center text-gray-300 hover:text-white transition-colors duration-200">
+              <a href="mailto:info@glt-gartenbau.de" className="flex items-center text-gray-300 hover:text-white transition-colors duration-200">
                 <Mail className="w-5 h-5 text-blue-600 mr-3" />
-                info@glt.de
+                info@glt-gartenbau.de
               </a>
             </div>
 
