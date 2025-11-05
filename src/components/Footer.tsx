@@ -102,8 +102,8 @@ const Footer: React.FC<FooterProps> = ({ hideLinks }) => {
               ) : (
                 <>
                   <a href="/impressum" className="text-gray-400 hover:text-white transition-colors duration-200">Impressum</a>
-                  <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">Datenschutz</a>
-                  <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">AGB</a>
+                  <a href="/datenschutz" className="text-gray-400 hover:text-white transition-colors duration-200">Datenschutz</a>
+                  <a href="/agb" className="text-gray-400 hover:text-white transition-colors duration-200">AGB</a>
                 </>
               )}
             </div>
