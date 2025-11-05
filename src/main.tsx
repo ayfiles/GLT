@@ -9,10 +9,10 @@ import './index.css';
 const root = createRoot(document.getElementById('root')!);
 
 function render() {
-  const path = window.location.pathname.toLowerCase();
-  const isImpressum = path === '/impressum';
-  const isDatenschutz = path === '/datenschutz';
-  const isAGB = path === '/agb';
+  const route = (window.location.hash || '#/').toLowerCase();
+  const isImpressum = route === '#/impressum';
+  const isDatenschutz = route === '#/datenschutz';
+  const isAGB = route === '#/agb';
   root.render(
     <StrictMode>
       {isImpressum ? <Impressum /> : isDatenschutz ? <Datenschutz /> : isAGB ? <AGB /> : <App />}
@@ -20,29 +20,14 @@ function render() {
   );
 }
 
-window.addEventListener('popstate', render);
+window.addEventListener('hashchange', render);
 
-// simple client-side navigation helper for internal links
+// Hash-based navigation helper
 (window as any).navigate = (to: string) => {
-  if (window.location.pathname !== to) {
-    window.history.pushState({}, '', to);
-    render();
+  const target = to.startsWith('#') ? to : `#${to.startsWith('/') ? to : `/${to}`}`;
+  if (window.location.hash !== target) {
+    window.location.hash = target; // triggers render via hashchange
   }
 };
 
-// Intercept clicks on internal links for SPA-style navigation
-document.addEventListener('click', (event) => {
-  const target = event.target as HTMLElement | null;
-  if (!target) return;
-  const link = target.closest('a');
-  if (!link) return;
-  const url = new URL(link.href, window.location.origin);
-  const isSameOrigin = url.origin === window.location.origin;
-  if (!isSameOrigin) return;
-  const pathname = url.pathname.toLowerCase();
-  if (['/impressum', '/datenschutz', '/agb', '/'].includes(pathname)) {
-    event.preventDefault();
-    (window as any).navigate(pathname);
-  }
-}, true);
 render();
