@@ -6,15 +6,20 @@ type FooterProps = { hideLinks?: boolean };
 
 const Footer: React.FC<FooterProps> = ({ hideLinks }) => {
   const handleLegalNav = (path: string) => (event: React.MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
     const navigate = (window as any).navigate;
+    const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+    const targetHash = `#${normalizedPath}`;
+
     if (typeof navigate === 'function') {
-      navigate(path);
-    } else {
-      const targetHash = `#${path.startsWith('/') ? path : `/${path}`}`;
-      if (window.location.hash !== targetHash) {
-        window.location.hash = targetHash;
-      }
+      event.preventDefault();
+      navigate(normalizedPath);
+      return;
+    }
+
+    // allow default anchor behavior to update the hash,
+    // but ensure it points to the right value if the browser ignores it
+    if (window.location.hash !== targetHash) {
+      window.location.hash = targetHash;
     }
   };
   return (
