@@ -23,9 +23,14 @@ const Header = () => {
   ];
 
   const handleLogoClick = () => {
-    const isHome = window.location.pathname === '/';
-    if (!isHome) {
-      window.location.href = '/';
+    const currentRoute = (window.location.hash || '#/').toLowerCase();
+    if (currentRoute !== '#/') {
+      const navigate = (window as any).navigate;
+      if (typeof navigate === 'function') {
+        navigate('/');
+      } else {
+        window.location.hash = '#/';
+      }
       return;
     }
     const hero = document.getElementById('hero');
