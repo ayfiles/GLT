@@ -1,10 +1,22 @@
 import React from 'react';
-import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
+import { Phone, Mail } from 'lucide-react';
 import gltLogo from '../assets/glt-logo.svg';
 
 type FooterProps = { hideLinks?: boolean };
 
 const Footer: React.FC<FooterProps> = ({ hideLinks }) => {
+  const handleLegalNav = (path: string) => (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    const navigate = (window as any).navigate;
+    if (typeof navigate === 'function') {
+      navigate(path);
+    } else {
+      const targetHash = `#${path.startsWith('/') ? path : `/${path}`}`;
+      if (window.location.hash !== targetHash) {
+        window.location.hash = targetHash;
+      }
+    }
+  };
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -101,9 +113,27 @@ const Footer: React.FC<FooterProps> = ({ hideLinks }) => {
                 </>
               ) : (
                 <>
-                  <a href="#/impressum" className="text-gray-400 hover:text-white transition-colors duration-200">Impressum</a>
-                  <a href="#/datenschutz" className="text-gray-400 hover:text-white transition-colors duration-200">Datenschutz</a>
-                  <a href="#/agb" className="text-gray-400 hover:text-white transition-colors duration-200">AGB</a>
+                  <a
+                    href="#/impressum"
+                    onClick={handleLegalNav('/impressum')}
+                    className="text-gray-400 hover:text-white transition-colors duration-200"
+                  >
+                    Impressum
+                  </a>
+                  <a
+                    href="#/datenschutz"
+                    onClick={handleLegalNav('/datenschutz')}
+                    className="text-gray-400 hover:text-white transition-colors duration-200"
+                  >
+                    Datenschutz
+                  </a>
+                  <a
+                    href="#/agb"
+                    onClick={handleLegalNav('/agb')}
+                    className="text-gray-400 hover:text-white transition-colors duration-200"
+                  >
+                    AGB
+                  </a>
                 </>
               )}
             </div>
